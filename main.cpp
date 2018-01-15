@@ -2,10 +2,13 @@
 #include <string>
 #include "FBullCowGame.hpp"
 
+// aliases bacause unreal
+using FText = std::string;
+using int32 = int;
 
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
+FText GetGuess();
 bool AskToPlayAgain();
 
 FBullCowGame BCGame; // instantiate the game globally. we will rerun the same occurrence
@@ -23,7 +26,7 @@ int main() {
 }
 
 void PrintIntro() {
-    constexpr int WORD_LENGTH = 5;
+    constexpr int32 WORD_LENGTH = 5;
     std::cout << "Welcome to Bulls and Cows" << std::endl;
     std::cout << "Your goal is to guess the " << WORD_LENGTH << " word in 10 tries" << std::endl;
     std::cout << "Good luck" << std::endl;
@@ -32,11 +35,11 @@ void PrintIntro() {
 
 void PlayGame() {
     BCGame.Reset();
-    int MaxTries = BCGame.GetMaxTries();
+    int32 MaxTries = BCGame.GetMaxTries();
     
     // TODO: switch to a while loop
-    for (int i = 0; i < MaxTries; i++) {
-        std::string Guess = GetGuess(); // TODO: make input validation
+    for (int32 i = 0; i < MaxTries; i++) {
+        FText Guess = GetGuess(); // TODO: make input validation
         
         // submit valid game to the game
         // print number of bull and cows
@@ -48,17 +51,17 @@ void PlayGame() {
     // TODO: summarise game
 }
 
-std::string GetGuess() {
-    int CurrentTry = BCGame.GetCurrentTry();
+FText GetGuess() {
+    int32 CurrentTry = BCGame.GetCurrentTry();
     std::cout << "Try " << CurrentTry << ". Enter your guess" << std::endl;
-    std::string Guess = "";
+    FText Guess = "";
     std::getline(std::cin, Guess);
     return Guess;
 }
 
 bool AskToPlayAgain() {
     std::cout << "Do you want to play again? (y/n)";
-    std::string Response = "";
+    FText Response = "";
     std::getline(std::cin, Response);
     
     return (Response[0] == 'y') || (Response[0] == 'Y');
