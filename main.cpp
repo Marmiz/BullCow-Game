@@ -26,9 +26,9 @@ int main() {
 }
 
 void PrintIntro() {
-    constexpr int32 WORD_LENGTH = 5;
+
     std::cout << "Welcome to Bulls and Cows" << std::endl;
-    std::cout << "Your goal is to guess the " << WORD_LENGTH << " word in 10 tries" << std::endl;
+    std::cout << "Your goal is to guess the " << BCGame.GetHiddenWordLength() << " word in 10 tries" << std::endl;
     std::cout << "Good luck" << std::endl;
     return;
 }
@@ -42,9 +42,11 @@ void PlayGame() {
         FText Guess = GetGuess(); // TODO: make input validation
         
         // submit valid game to the game
+        FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
         // print number of bull and cows
         
-        std::cout << "Your guess was: " << Guess << std::endl;
+        std::cout << "Bulls: " << BullCowCount.Bull;
+        std::cout << "Cows: " << BullCowCount.Cow << std::endl;
         std::cout << std::endl;
     }
     

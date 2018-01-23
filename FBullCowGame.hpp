@@ -9,8 +9,8 @@
 using FString = std::string;
 using int32 = int;
 
-// ciccio
-struct BullCowCount {
+// counter
+struct FBullCowCount {
     int32 Bull = 0;
     int32 Cow = 0;
 };
@@ -22,8 +22,10 @@ public:
     int32 GetMaxTries() const;
     int32 GetCurrentTry() const;
     bool IsGameWon() const;
-    bool CheckGuessValidity(FString);
-    BullCowCount SubmitGuess(FString);
+    bool CheckGuessValidity(FString) const;
+    int32 GetHiddenWordLength() const;
+    
+    FBullCowCount SubmitGuess(FString);
     
 private:
     int32 MyCurrentTry;
